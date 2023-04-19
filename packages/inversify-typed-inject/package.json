@@ -6,8 +6,9 @@
     "test": "jest",
     "typecheck": "tsc --noEmit"
   },
+  "main": "src/main",
   "dependencies": {
-    "typed-decorators": "*"
+    "typesafe-decorators": "*"
   },
   "devDependencies": {
   },

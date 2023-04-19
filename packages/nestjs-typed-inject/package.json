@@ -6,12 +6,25 @@
     "test": "jest",
     "typecheck": "tsc --noEmit"
   },
+  "main": "src/main",
+  "exports": {
+    ".": {
+      "import": "./src/main/index.ts"
+    },
+    "./typeorm": {
+      "import": "./src/main/typeorm.ts"
+    },
+    "./package.json": "./package.json",
+    "./*": "./src/main/*"
+  },
   "dependencies": {
-    "typed-decorators": "*"
+    "typesafe-decorators": "*"
   },
   "devDependencies": {
   },
   "peerDependencies": {
-    "@nestjs/common": "^9.4.0"
+    "@nestjs/common": "^9.4.0",
+    "@nestjs/typeorm": "^9.0.1",
+    "typeorm": "^0.3.15"
   }
 }
