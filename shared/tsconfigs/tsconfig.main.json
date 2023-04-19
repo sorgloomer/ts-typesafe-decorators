@@ -1,0 +1,13 @@
+{
+  "extends": "shared/tsconfig.json",
+  "compilerOptions": {
+    "paths": {
+      "@main/*": [
+        "../src/main/*"
+      ]
+    }
+  },
+  "include": [
+    "src/main"
+  ]
+}

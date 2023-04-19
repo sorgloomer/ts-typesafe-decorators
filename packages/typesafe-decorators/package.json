@@ -1,0 +1,14 @@
+{
+  "name": "typesafe-decorators",
+  "version": "1.0.0",
+  "scripts": {
+    "prettier-format": "prettier --write .",
+    "test": "jest",
+    "typecheck": "tsc --noEmit"
+  },
+  "main": "src/main/index.ts",
+  "devDependencies": {
+    "prettier": "^2.8.7",
+    "typescript": "^5.0.4"
+  }
+}

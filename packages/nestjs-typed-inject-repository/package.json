@@ -1,0 +1,17 @@
+{
+  "name": "nestjs-typed-inject-repository",
+  "version": "1.0.0",
+  "scripts": {
+    "prettier-format": "prettier --write .",
+    "test": "jest",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "typed-decorators": "*"
+  },
+  "peerDependencies": {
+    "@nestjs/common": "^9.4.0",
+    "@nestjs/typeorm": "^9.0.1",
+    "typeorm": "^0.3.15"
+  }
+}

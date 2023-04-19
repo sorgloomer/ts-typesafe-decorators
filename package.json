@@ -1,0 +1,23 @@
+{
+  "name": "ts-typed-decorators",
+  "scripts": {
+    "lerna": "lerna",
+    "prettier-format": "prettier --write .",
+    "test": "lerna run test",
+    "typecheck": "lerna run typecheck"
+  },
+  "devDependencies": {
+    "@jest/globals": "^29.5.0",
+    "@types/jest": "^29.5.0",
+    "@types/node": "^18.15.11",
+    "jest": "^29.5.0",
+    "lerna": "^6.6.1",
+    "prettier": "^2.8.7",
+    "ts-jest": "^29.1.0",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.0.4"
+  },
+  "workspaces": [
+    "packages/*"
+  ]
+}

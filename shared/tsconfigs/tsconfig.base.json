@@ -1,0 +1,28 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "strict": true,
+    "resolveJsonModule": true,
+    "outDir": "dist",
+    "types": [
+      "node"
+    ],
+    "paths": {
+      "@main": [
+        "./src/main"
+      ],
+      "@main/*": [
+        "./src/main/*"
+      ],
+      "@test/*": [
+        "./src/test/*"
+      ],
+      "@shared/*": [
+        "../../shared/*"
+      ]
+    },
+    "experimentalDecorators": true
+  }
+}

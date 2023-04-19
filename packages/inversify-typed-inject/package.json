@@ -1,0 +1,17 @@
+{
+  "name": "inversify-typed-inject",
+  "version": "1.0.0",
+  "scripts": {
+    "prettier-format": "prettier --write .",
+    "test": "jest",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "typed-decorators": "*"
+  },
+  "devDependencies": {
+  },
+  "peerDependencies": {
+    "inversify": "^6.0.1"
+  }
+}
