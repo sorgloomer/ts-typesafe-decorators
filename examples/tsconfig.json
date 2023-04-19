@@ -1,0 +1,6 @@
+{
+  "extends": "../shared/tsconfigs/tsconfig.base.json",
+  "compilerOptions": {
+    "paths": {},
+  },
+}

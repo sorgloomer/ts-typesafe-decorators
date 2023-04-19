@@ -7,16 +7,6 @@
     "typecheck": "tsc --noEmit"
   },
   "main": "src/main",
-  "exports": {
-    ".": {
-      "import": "./src/main/index.ts"
-    },
-    "./typeorm": {
-      "import": "./src/main/typeorm.ts"
-    },
-    "./package.json": "./package.json",
-    "./*": "./src/main/*"
-  },
   "dependencies": {
     "typesafe-decorators": "*"
   },
