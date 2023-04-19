@@ -2,6 +2,14 @@
 
 Raise an error at compile time if you accidentally inject the wrong service, using your favorite ioc container.
 
+### Install
+
+    npm i --save nestjs-typed-inject
+
+### Example
+
+See the `examples` folder
+
     import { ServiceIdentifier, TypedInject, TypedInjectRepository } from 'nestjs-typed-inject';
     import { Injectable } from '@nestjs/common';
 

@@ -5,8 +5,8 @@
   "dependencies": {
     "@nestjs/common": "^9.4.0",
     "typeorm": "^0.3.15",
-    "nestjs-typed-inject": "file:../../packages/nestjs-typed-inject",
-    "typesafe-decorators": "file:../../packages/typesafe-decorators"
+    "nestjs-typed-inject": "file:../packages/nestjs-typed-inject",
+    "typesafe-decorators": "file:../packages/typesafe-decorators"
   }
 }
 
