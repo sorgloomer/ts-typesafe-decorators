@@ -1,16 +1,38 @@
 {
   "name": "ts-typed-decorators",
+  "author": "Tamás Hegedűs <tamas.laszlo.hegedus@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sorgloomer/ts-typesafe-decorators"
+  },
   "scripts": {
     "lerna": "lerna",
+    "lint": "eslint --ext .ts 'examples/*/src' 'packages/*/lib/**/*' 'packages/*/test/**/*'",
     "prettier-format": "prettier --write .",
     "test": "lerna run test",
     "typecheck": "lerna run typecheck"
   },
   "devDependencies": {
-    "lerna": "^6.6.1",
-    "prettier": "^2.8.7"
+    "@typescript-eslint/eslint-plugin": "^5.59.0",
+    "eslint": "^8.38.0",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-simple-import-sort": "^10.0.0",
+    "lerna": "^6.6.1"
   },
   "workspaces": [
     "packages/*"
-  ]
+  ],
+  "funding": "https://github.com/sponsors/sorgloomer",
+  "homepage": "https://github.com/sorgloomer/ts-typesafe-decorators",
+  "keywords": [
+    "typescript",
+    "typesafe",
+    "decorator",
+    "ioc",
+    "inference"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "husky": "^8.0.3"
+  }
 }

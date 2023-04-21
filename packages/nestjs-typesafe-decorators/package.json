@@ -1,5 +1,6 @@
 {
   "name": "nestjs-typesafe-decorators",
+  "description": "Typesafe @Inject decorator for Nest",
   "version": "1.0.0",
   "scripts": {
     "prettier-format": "prettier --write .",

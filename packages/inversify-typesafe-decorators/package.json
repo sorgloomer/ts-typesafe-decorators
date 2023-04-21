@@ -1,5 +1,6 @@
 {
   "name": "inversify-typesafe-decorators",
+  "description": "Typesafe @inject decorator for inversify",
   "version": "1.0.0",
   "scripts": {
     "prettier-format": "prettier --write .",

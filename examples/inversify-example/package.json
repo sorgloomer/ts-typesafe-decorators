@@ -1,0 +1,9 @@
+{
+  "scripts": {
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "inversify": "^6.0.1",
+    "inversify-typesafe-decorators": "file:../../packages/inversify-typesafe-decorators"
+  }
+}

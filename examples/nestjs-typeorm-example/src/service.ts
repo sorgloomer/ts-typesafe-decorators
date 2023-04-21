@@ -16,7 +16,11 @@ class BarEntity {
 class Service {
   constructor(
     private readonly logger: Logger,
+
     @TypedInjectRepository(FooEntity)
-    private readonly fooRepo: Repository<BarEntity>,
+    private readonly fooRepo: Repository<FooEntity>,
+
+    @TypedInjectRepository(FooEntity)
+    private readonly barRepo: Repository<BarEntity>,
   ) {}
 }

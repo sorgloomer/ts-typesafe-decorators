@@ -1,6 +1,27 @@
-import { Module } from '@nestjs/common';
-import { typedProvider } from 'nestjs-typesafe-decorators';
-import { FooService, Service, TOKEN_BAR, TOKEN_FOO } from './service';
+import { Injectable, Logger, Module } from '@nestjs/common';
+import { TypedInject, TypedInjectionToken, typedProvider } from 'nestjs-typesafe-decorators';
+
+export interface IFooService { foo(): string; }
+export interface IBarService { bar(): string; }
+
+export const TOKEN_FOO = 'TOKEN_FOO' as TypedInjectionToken<IFooService>;
+export const TOKEN_BAR = 'TOKEN_BAR' as TypedInjectionToken<IBarService>;
+
+@Injectable()
+export class Service {
+  constructor(
+    private readonly logger: Logger,
+
+    @TypedInject(TOKEN_FOO)
+    private readonly fooService: IFooService,
+
+    @TypedInject(TOKEN_FOO)
+    private readonly barService: IBarService,
+  ) {}
+}
+
+@Injectable() class FooService implements IFooService { foo(): string { return '' }; }
+@Injectable() class BarService implements IBarService { bar(): string { return '' }; }
 
 @Module({
   providers: [
