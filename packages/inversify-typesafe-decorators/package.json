@@ -14,9 +14,6 @@
   "devDependencies": {
     "inversify": "^6.0.1"
   },
-  "peerDependencies": {
-    "inversify": "^6.0.1"
-  },
   "files": [
     "./lib",
     "./package.json"

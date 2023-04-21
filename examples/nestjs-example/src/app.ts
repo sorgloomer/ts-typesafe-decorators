@@ -10,11 +10,6 @@ export const TOKEN_BAR = 'TOKEN_BAR' as TypedInjectionToken<IBarService>;
 @Injectable()
 export class Service {
   constructor(
-    private readonly logger: Logger,
-
-    @TypedInject(TOKEN_FOO)
-    private readonly fooService: IFooService,
-
     @TypedInject(TOKEN_FOO)
     private readonly barService: IBarService,
   ) {}
