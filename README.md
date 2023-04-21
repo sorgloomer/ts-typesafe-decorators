@@ -1,5 +1,10 @@
 # typesafe-decorators
 
+<p>
+  <a href="https://github.com/sorgloomer/ts-typesafe-decorators/actions?query=branch%3Amaster"><img src="https://github.com/sorgloomer/ts-typesafe-decorators/actions/workflows/test.yml/badge.svg?event=push&branch=master" alt="Test" /></a>
+  <a href="https://opensource.org/licenses/MIT" rel="nofollow"><img src="https://img.shields.io/github/license/sorgloomer/ts-typesafe-decorators" alt="License"></a>
+</p>
+
 <div>
   <a href="https://github.com/sorgloomer/ts-typesafe-decorators">GitHub</a>
   <span>&nbsp;&nbsp;•&nbsp;&nbsp;</span>
