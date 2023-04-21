@@ -3,7 +3,6 @@
   "description": "Better types for experimental/legacy TypeScript decorators",
   "version": "1.0.0",
   "scripts": {
-    "prettier-format": "prettier --write .",
     "test": "jest",
     "typecheck": "tsc --noEmit"
   },

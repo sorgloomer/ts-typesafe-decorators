@@ -9,14 +9,23 @@ module.exports = {
   ],
   extends: [
     "eslint:recommended",
-    "plugin:@typescript-eslint/recommended"
+    "plugin:@typescript-eslint/recommended",
   ],
   rules: {
     "import/order": 0,
-    "import/no-unresolved": 1,
+    "import/no-unresolved": 0,
     "import/no-duplicates": 1,
     "sort-imports": 0,
     "simple-import-sort/imports": 1,
     "simple-import-sort/exports": 1,
+    "@typescript-eslint/no-explicit-any": 0,
   },
+  "overrides": [
+    {
+      "files": ["examples/**/*.ts"],
+      "rules": {
+        "@typescript-eslint/no-unused-vars": 0,
+      },
+    },
+  ],
 };

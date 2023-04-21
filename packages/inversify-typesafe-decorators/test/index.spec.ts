@@ -5,7 +5,7 @@ describe('TypedInject', () => {
   describe('injecting into compatible field', () => {
     // language=typescript
     const setup = lazyCompileTsFile(`
-      import { TypedInject } from '@main';
+      import { TypedInject } from '@lib';
       import { injectable, interfaces } from 'inversify';
 
       interface IServiceA {
@@ -35,7 +35,7 @@ describe('TypedInject', () => {
   describe('injecting into incompatible field', () => {
     // language=typescript
     const setup = lazyCompileTsFile(`
-      import { TypedInject } from '@main';
+      import { TypedInject } from '@lib';
       import { injectable, interfaces } from 'inversify';
 
       interface IServiceA {

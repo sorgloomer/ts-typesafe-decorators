@@ -5,5 +5,8 @@
   "dependencies": {
     "inversify": "^6.0.1",
     "inversify-typesafe-decorators": "file:../../packages/inversify-typesafe-decorators"
+  },
+  "devDependencies": {
+    "@types/node": "^18.15.12"
   }
 }

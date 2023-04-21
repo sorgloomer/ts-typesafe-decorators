@@ -1,5 +1,18 @@
 # typesafe-decorators
 
+<div>
+  <a href="https://github.com/sorgloomer/ts-typesafe-decorators">GitHub</a>
+  <span>&nbsp;&nbsp;•&nbsp;&nbsp;</span>
+  <a href="https://www.npmjs.com/package/typesafe-decorators">npm</a>
+  <span>&nbsp;&nbsp;•&nbsp;&nbsp;</span>
+  <a href="https://github.com/sorgloomer/ts-typesafe-decorators/issues/new">Issues</a>
+  <span>&nbsp;&nbsp;•&nbsp;&nbsp;</span>
+  <a href="https://twitter.com/hege_hegedus">@hege_hegedus</a>
+  <br />
+</div>
+
+# Intro
+
 Typescript 5 made it possible for legacy experimental decorators to check the types of the things they are applied to.   
 
 This repository contains helper libraries to enforce the correct types of injected services at compile time, for your

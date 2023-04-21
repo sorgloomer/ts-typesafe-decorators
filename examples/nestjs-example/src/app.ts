@@ -20,8 +20,8 @@ export class Service {
   ) {}
 }
 
-@Injectable() class FooService implements IFooService { foo(): string { return '' }; }
-@Injectable() class BarService implements IBarService { bar(): string { return '' }; }
+@Injectable() class FooService implements IFooService { foo(): string { return ''; } }
+@Injectable() class BarService implements IBarService { bar(): string { return ''; } }
 
 @Module({
   providers: [

@@ -5,7 +5,7 @@ describe('TypedClassDecorator', () => {
   describe('decorating a class of correct type', () => {
     // language=typescript
     const setup = lazyCompileTsFile(`
-      import { TypedClassDecorator } from '@main';
+      import { TypedClassDecorator } from '@lib';
 
       interface IConstructor {
         new(a: number): { bar: 'hzdju' };
@@ -29,7 +29,7 @@ describe('TypedClassDecorator', () => {
   describe('decorating a constructor with fewer arguments', () => {
     // language=typescript
     const setup = lazyCompileTsFile(`
-      import { TypedClassDecorator } from '@main';
+      import { TypedClassDecorator } from '@lib';
 
       interface IConstructor {
         new(a: number, b: string): {};
@@ -51,7 +51,7 @@ describe('TypedClassDecorator', () => {
   describe('decorating a constructor with more arguments', () => {
     // language=typescript
     const setup = lazyCompileTsFile(`
-      import { TypedClassDecorator } from '@main';
+      import { TypedClassDecorator } from '@lib';
 
       interface IConstructor {
         new(a: number, b: string): {};
@@ -78,7 +78,7 @@ describe('TypedClassDecorator', () => {
   describe('decorating a constructor with wrong instance type', () => {
     // language=typescript
     const setup = lazyCompileTsFile(`
-      import { TypedClassDecorator } from '@main';
+      import { TypedClassDecorator } from '@lib';
 
       interface IConstructor {
         new(): { foo: string };

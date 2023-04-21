@@ -5,7 +5,7 @@ describe('TypedPropertyDecorator', () => {
   describe('decorating a property of exact type', () => {
     // language=typescript
     const setup = lazyCompileTsFile(`
-      import { TypedPropertyDecorator } from '@main';
+      import { TypedPropertyDecorator } from '@lib';
 
       declare const decorator: TypedPropertyDecorator<string>;
 
@@ -22,7 +22,7 @@ describe('TypedPropertyDecorator', () => {
   describe('decorating a property of super type', () => {
     // language=typescript
     const setup = lazyCompileTsFile(`
-      import { TypedPropertyDecorator } from '@main';
+      import { TypedPropertyDecorator } from '@lib';
 
       declare const decorator: TypedPropertyDecorator<'gfkil'>;
 
@@ -44,7 +44,7 @@ describe('TypedPropertyDecorator', () => {
   describe('decorating a property of extended type', () => {
     // language=typescript
     const setup = lazyCompileTsFile(`
-      import { TypedPropertyDecorator } from '@main';
+      import { TypedPropertyDecorator } from '@lib';
 
       declare const decorator: TypedPropertyDecorator<number>;
 

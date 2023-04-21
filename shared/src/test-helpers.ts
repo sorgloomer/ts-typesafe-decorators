@@ -1,5 +1,6 @@
 import * as projectTsConfig from '@shared/tsconfigs/base.tsconfig.json';
 import * as ts from 'typescript';
+
 import { lazy, Producer } from './lazy';
 
 const VIRTUAL_ENTRY = 'virtual/entry.ts';
@@ -29,12 +30,13 @@ export function compileTsFile(
     switch (fileName) {
       case VIRTUAL_ENTRY:
         return content;
-      default:
+      default: {
         const result = readFileReal.call(host, fileName);
         inputFiles.set(fileName, result?.length ?? null);
         if (result !== undefined) {
           return result;
         }
+      }
     }
     throw new Error('Could not load file: ' + fileName);
   };
@@ -43,15 +45,16 @@ export function compileTsFile(
 
   const emitResult = program.emit();
 
-  let allDiagnostics = ts
+  const allDiagnostics = ts
     .getPreEmitDiagnostics(program)
     .concat(emitResult.diagnostics);
 
-  let result: string[] = [];
+  const result: string[] = [];
   allDiagnostics.forEach(diagnostic => {
     if (diagnostic.file) {
-      let { line, character } = ts.getLineAndCharacterOfPosition(diagnostic.file, diagnostic.start!);
-      let message = ts.flattenDiagnosticMessageText(diagnostic.messageText, "\n");
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+      const { line, character } = ts.getLineAndCharacterOfPosition(diagnostic.file, diagnostic.start!);
+      const message = ts.flattenDiagnosticMessageText(diagnostic.messageText, "\n");
       result.push(`${diagnostic.file.fileName} (${line + 1},${character + 1}): ${message}`);
     } else {
       result.push(ts.flattenDiagnosticMessageText(diagnostic.messageText, "\n"));

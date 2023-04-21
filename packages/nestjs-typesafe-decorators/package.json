@@ -3,7 +3,6 @@
   "description": "Typesafe @Inject decorator for Nest",
   "version": "1.0.0",
   "scripts": {
-    "prettier-format": "prettier --write .",
     "test": "jest",
     "typecheck": "tsc --noEmit"
   },

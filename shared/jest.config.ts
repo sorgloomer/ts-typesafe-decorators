@@ -1,4 +1,5 @@
 import { JestConfigWithTsJest, pathsToModuleNameMapper } from 'ts-jest';
+
 import { compilerOptions } from './tsconfigs/base.tsconfig.json';
 
 export default {

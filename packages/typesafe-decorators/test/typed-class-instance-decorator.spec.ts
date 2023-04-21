@@ -5,7 +5,7 @@ describe('TypedClassInstanceDecorator', () => {
   describe('decorating a class of correct type', () => {
     // language=typescript
     const setup = lazyCompileTsFile(`
-      import { TypedClassInstanceDecorator } from '@main';
+      import { TypedClassInstanceDecorator } from '@lib';
 
       interface IService {
         foo(): number;
@@ -28,7 +28,7 @@ describe('TypedClassInstanceDecorator', () => {
   describe('decorating a class of wrong type', () => {
     // language=typescript
     const setup = lazyCompileTsFile(`
-      import { TypedClassInstanceDecorator } from '@main';
+      import { TypedClassInstanceDecorator } from '@lib';
 
       interface IService {
         foo(): number;

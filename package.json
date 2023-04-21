@@ -7,8 +7,7 @@
   },
   "scripts": {
     "lerna": "lerna",
-    "lint": "eslint --ext .ts 'examples/*/src' 'packages/*/lib/**/*' 'packages/*/test/**/*'",
-    "prettier-format": "prettier --write .",
+    "lint": "eslint --ext .ts --max-warnings=0 .",
     "test": "lerna run test",
     "typecheck": "lerna run typecheck"
   },
@@ -17,6 +16,7 @@
     "eslint": "^8.38.0",
     "eslint-plugin-import": "^2.27.5",
     "eslint-plugin-simple-import-sort": "^10.0.0",
+    "husky": "^8.0.3",
     "lerna": "^6.6.1"
   },
   "workspaces": [
@@ -31,8 +31,5 @@
     "ioc",
     "inference"
   ],
-  "license": "MIT",
-  "dependencies": {
-    "husky": "^8.0.3"
-  }
+  "license": "MIT"
 }
