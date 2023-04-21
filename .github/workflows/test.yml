@@ -1,0 +1,38 @@
+name: test
+
+on:
+  push:
+    branches:
+      - "master"
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  test-node:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node: ["16", "18"]
+        typescript: ["5.0"]
+    name: Test with TypeScript ${{ matrix.typescript }} on Node ${{ matrix.node }}
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node }}
+      - run: npm install
+      - run: npm install typescript@${{ matrix.typescript }}
+      - run: npm run test
+
+  lint:
+    runs-on: ubuntu-latest
+    name: Lint and Typecheck
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: "18"
+      - run: npm install
+      - run: npm run typecheck
+      - run: npm run lint
