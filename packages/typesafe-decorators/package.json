@@ -6,9 +6,13 @@
     "test": "jest",
     "typecheck": "tsc --noEmit"
   },
-  "main": "src/main",
+  "main": "lib",
   "devDependencies": {
     "prettier": "^2.8.7",
     "typescript": "^5.0.4"
-  }
+  },
+  "files": [
+    "./lib",
+    "./package.json"
+  ]
 }

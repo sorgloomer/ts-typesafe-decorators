@@ -5,7 +5,7 @@ describe('TypedInject', () => {
   describe('injecting into compatible field', () => {
     // language=typescript
     const setup = lazyCompileTsFile(`
-      import { TypedInjectRepository } from '@main';
+      import { TypedInjectRepository } from '@lib/typeorm';
       import { Repository } from 'typeorm';
       import { Logger } from '@nestjs/common';
 
@@ -30,7 +30,7 @@ describe('TypedInject', () => {
   describe('injecting into incompatible field', () => {
     // language=typescript
     const setup = lazyCompileTsFile(`
-      import { TypedInjectRepository } from '@main';
+      import { TypedInjectRepository } from '@lib/typeorm';
       import { Repository } from 'typeorm';
       import { Logger } from '@nestjs/common';
 

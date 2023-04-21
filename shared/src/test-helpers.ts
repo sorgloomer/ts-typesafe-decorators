@@ -1,17 +1,15 @@
-import * as projectTsConfig from '@shared/tsconfigs/tsconfig.base.json';
+import * as projectTsConfig from '@shared/tsconfigs/base.tsconfig.json';
 import * as ts from 'typescript';
 import { lazy, Producer } from './lazy';
 
 const VIRTUAL_ENTRY = 'virtual/entry.ts';
 
-type CompileTsFileOptions = { cwd?: string };
 export const lazyCompileTsFile = (
   content: string,
-  opts?: CompileTsFileOptions,
-): Producer<string[]> => lazy(() => compileTsFile(content, opts));
+): Producer<string[]> => lazy(() => compileTsFile(content));
+
 export function compileTsFile(
   content: string,
-  { cwd }: CompileTsFileOptions = {},
 ): string[] {
   const options: ts.CompilerOptions = {
     ...projectTsConfig.compilerOptions as any,
@@ -21,9 +19,6 @@ export function compileTsFile(
   const createdFiles = new Map<string, string>();
   const inputFiles = new Map<string, number | null>();
   const host = ts.createCompilerHost(options);
-  if (cwd !== undefined) {
-    host.getCurrentDirectory = () => cwd;
-  }
 
   host.writeFile = (fileName: string, contents: string) => {
     createdFiles.set(fileName, contents);

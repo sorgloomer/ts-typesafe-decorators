@@ -1,0 +1,9 @@
+{
+  "scripts": {
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@nestjs/common": "^9.4.0",
+    "nestjs-typesafe-decorators": "file:../../packages/nestjs-typesafe-decorators"
+  }
+}

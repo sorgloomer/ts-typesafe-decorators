@@ -1,0 +1,29 @@
+{
+  "name": "nestjs-typesafe-decorators",
+  "version": "1.0.0",
+  "scripts": {
+    "prettier-format": "prettier --write .",
+    "test": "jest",
+    "typecheck": "tsc --noEmit"
+  },
+  "main": "lib",
+  "dependencies": {
+    "typesafe-decorators": "*"
+  },
+  "devDependencies": {
+    "@nestjs/common": "^9.4.0",
+    "@nestjs/typeorm": "^9.0.1",
+    "jest": "^29.5.0",
+    "ts-jest": "^29.1.0",
+    "typeorm": "^0.3.15"
+  },
+  "peerDependencies": {
+    "@nestjs/common": "^9.4.0",
+    "@nestjs/typeorm": "^9.0.1",
+    "typeorm": "^0.3.15"
+  },
+  "files": [
+    "./lib",
+    "./package.json"
+  ]
+}

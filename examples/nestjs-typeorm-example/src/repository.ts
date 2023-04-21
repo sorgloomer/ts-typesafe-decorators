@@ -1,5 +1,5 @@
 import { Injectable, Logger } from '@nestjs/common';
-import { TypedInjectRepository } from 'nestjs-typed-inject/typeorm';
+import { TypedInjectRepository } from 'nestjs-typesafe-decorators/lib/typeorm';
 import { Entity, Repository } from 'typeorm';
 
 @Entity()
