@@ -23,8 +23,6 @@ Typescript 5 made it possible for legacy experimental decorators to check the ty
 This repository contains helper libraries to enforce the correct types of injected services at compile time, for your
 favorite ioc container.
 
-[![Typecheck Demo](./docs/demo.gif)](./docs/demo.webm)
-
 
 ### Usage with NestJS
 
