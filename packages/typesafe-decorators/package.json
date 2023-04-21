@@ -2,7 +2,7 @@
   "name": "typesafe-decorators",
   "author": "Tamás Hegedűs <tamas.laszlo.hegedus@gmail.com>",
   "description": "Better types for experimental/legacy TypeScript decorators",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "scripts": {
     "test": "jest",
     "typecheck": "tsc --noEmit"

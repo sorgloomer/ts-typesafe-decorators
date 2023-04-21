@@ -2,14 +2,14 @@
   "name": "nestjs-typesafe-decorators",
   "author": "Tamás Hegedűs <tamas.laszlo.hegedus@gmail.com>",
   "description": "Typesafe @Inject decorator for Nest",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "scripts": {
     "test": "jest",
     "typecheck": "tsc --noEmit"
   },
   "main": "lib",
   "dependencies": {
-    "typesafe-decorators": "^1.0.1"
+    "typesafe-decorators": "^1.0.2"
   },
   "devDependencies": {
     "@nestjs/common": "^9.4.0",
