@@ -1,14 +1,14 @@
 {
   "name": "inversify-typesafe-decorators",
   "description": "Typesafe @inject decorator for inversify",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "scripts": {
     "test": "jest",
     "typecheck": "tsc --noEmit"
   },
   "main": "lib",
   "dependencies": {
-    "typesafe-decorators": "^1.0.0"
+    "typesafe-decorators": "^1.0.1"
   },
   "devDependencies": {
     "inversify": "^6.0.1"
