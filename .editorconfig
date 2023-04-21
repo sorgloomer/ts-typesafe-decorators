@@ -39,6 +39,3 @@ ij_typescript_use_semicolon_after_statement = true
 
 ij_any_keep_simple_blocks_in_one_line = true
 ij_any_keep_simple_methods_in_one_line = true
-
-[*.md]
-trim_trailing_whitespace = false

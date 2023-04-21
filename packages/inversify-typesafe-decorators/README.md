@@ -1,4 +1,4 @@
-# typesafe-decorators
+# inversify-typesafe-decorators
 
 <p>
   <a href="https://github.com/sorgloomer/ts-typesafe-decorators/actions?query=branch%3Amaster"><img src="https://github.com/sorgloomer/ts-typesafe-decorators/actions/workflows/test.yml/badge.svg?event=push&branch=master" alt="Test" /></a>
@@ -22,8 +22,6 @@ Typescript 5 made it possible for legacy experimental decorators to check the ty
 
 This repository contains helper libraries to enforce the correct types of injected services at compile time, for your
 favorite ioc container.
-
-[![Typecheck Demo](./docs/demo.gif)](./docs/demo.webm)
 
 
 ### Usage with NestJS
