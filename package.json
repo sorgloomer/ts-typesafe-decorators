@@ -1,6 +1,7 @@
 {
   "name": "ts-typed-decorators",
   "author": "Tamás Hegedűs <tamas.laszlo.hegedus@gmail.com>",
+  "description": "Better types for experimental/legacy TypeScript decorators",
   "repository": {
     "type": "git",
     "url": "https://github.com/sorgloomer/ts-typesafe-decorators"

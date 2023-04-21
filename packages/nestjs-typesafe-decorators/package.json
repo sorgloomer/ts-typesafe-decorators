@@ -1,5 +1,6 @@
 {
   "name": "nestjs-typesafe-decorators",
+  "author": "Tamás Hegedűs <tamas.laszlo.hegedus@gmail.com>",
   "description": "Typesafe @Inject decorator for Nest",
   "version": "1.0.1",
   "scripts": {
@@ -25,5 +26,18 @@
   "files": [
     "./lib",
     "./package.json"
-  ]
+  ],
+  "funding": "https://github.com/sponsors/sorgloomer",
+  "homepage": "https://github.com/sorgloomer/ts-typesafe-decorators",
+  "keywords": [
+    "typescript",
+    "typesafe",
+    "decorator",
+    "ioc",
+    "inference",
+    "inject",
+    "nestjs",
+    "nest"
+  ],
+  "license": "MIT"
 }
