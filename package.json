@@ -11,6 +11,7 @@
     "build": "npm run lint && lerna run build",
     "lerna": "lerna",
     "lint": "eslint --ext .ts --max-warnings=0 .",
+    "publish": "lerna publish",
     "test": "lerna run test",
     "typecheck": "lerna run typecheck"
   },
