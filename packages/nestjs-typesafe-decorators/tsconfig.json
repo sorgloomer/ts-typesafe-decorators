@@ -1,3 +1,11 @@
 {
-  "extends": "../../shared/tsconfigs/base.tsconfig.json"
+  "extends": "../../shared/tsconfigs/base.tsconfig.json",
+  "files": [
+    "./src/index.ts",
+    "./src/typeorm.ts"
+  ],
+  "compilerOptions": {
+    "declaration": true,
+    "outDir": "./lib"
+  }
 }

@@ -5,7 +5,7 @@ describe('TypedMethodDecorator', () => {
   describe('decorating a method of exact type', () => {
     // language=typescript
     const setup = lazyCompileTsFile(`
-      import { TypedPropertyDecorator } from '@lib';
+      import { TypedPropertyDecorator } from '@src';
 
       declare const decorator: TypedPropertyDecorator<(p1: number) => string>;
 
@@ -22,7 +22,7 @@ describe('TypedMethodDecorator', () => {
   describe('decorating a method with more arguments', () => {
     // language=typescript
     const setup = lazyCompileTsFile(`
-      import { TypedPropertyDecorator } from '@lib';
+      import { TypedPropertyDecorator } from '@src';
 
       declare const decorator: TypedPropertyDecorator<(p1: number) => string>;
 
@@ -45,7 +45,7 @@ describe('TypedMethodDecorator', () => {
   describe('decorating a method with fewer arguments', () => {
     // language=typescript
     const setup = lazyCompileTsFile(`
-      import { TypedPropertyDecorator } from '@lib';
+      import { TypedPropertyDecorator } from '@src';
 
       declare const decorator: TypedPropertyDecorator<(p1: number) => string>;
 
@@ -62,7 +62,7 @@ describe('TypedMethodDecorator', () => {
   describe('decorating a method with super return type', () => {
     // language=typescript
     const setup = lazyCompileTsFile(`
-      import { TypedPropertyDecorator } from '@lib';
+      import { TypedPropertyDecorator } from '@src';
 
       declare const decorator: TypedPropertyDecorator<(p1: number) => string>;
 
@@ -83,7 +83,7 @@ describe('TypedMethodDecorator', () => {
     describe('decorating a method with extended return type', () => {
     // language=typescript
     const setup = lazyCompileTsFile(`
-      import { TypedPropertyDecorator } from '@lib';
+      import { TypedPropertyDecorator } from '@src';
 
       declare const decorator: TypedPropertyDecorator<(p1: number) => string>;
 
@@ -100,7 +100,7 @@ describe('TypedMethodDecorator', () => {
   describe('decorating a method with unrelated return type', () => {
     // language=typescript
     const setup = lazyCompileTsFile(`
-      import { TypedPropertyDecorator } from '@lib';
+      import { TypedPropertyDecorator } from '@src';
 
       declare const decorator: TypedPropertyDecorator<(p1: number) => 3 | 4>;
 

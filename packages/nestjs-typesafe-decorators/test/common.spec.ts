@@ -7,7 +7,7 @@ describe('common', () => {
     describe('injecting into compatible field', () => {
       // language=typescript
       const setup = lazyCompileTsFile(`
-        import { TypedInject } from '@lib';
+        import { TypedInject } from '@src';
         import { Logger } from '@nestjs/common';
 
         class ServiceA {
@@ -36,7 +36,7 @@ describe('common', () => {
     describe('injecting into incompatible field', () => {
       // language=typescript
       const setup = lazyCompileTsFile(`
-        import { TypedInject } from '@lib';
+        import { TypedInject } from '@src';
         import { Logger } from '@nestjs/common';
 
         class ServiceA {
@@ -71,7 +71,7 @@ describe('common', () => {
     describe('providing compatible service', () => {
       // language=typescript
       const setup = lazyCompileTsFile(`
-        import { TypedInjectionToken, typedProvider } from '@lib';
+        import { TypedInjectionToken, typedProvider } from '@src';
         import { Module } from '@nestjs/common';
         declare const TOKEN: TypedInjectionToken<FooInterface>;
         interface FooInterface {
@@ -99,7 +99,7 @@ describe('common', () => {
     describe('providing incompatible service', () => {
       // language=typescript
       const setup = lazyCompileTsFile(`
-        import { TypedInjectionToken, typedProvider } from '@lib';
+        import { TypedInjectionToken, typedProvider } from '@src';
         import { Module } from '@nestjs/common';
         declare const TOKEN: TypedInjectionToken<FooInterface>;
         interface FooInterface {
@@ -130,7 +130,7 @@ describe('common', () => {
     describe('providing incompatible alias by constructor', () => {
       // language=typescript
       const setup = lazyCompileTsFile(`
-        import { TypedInjectionToken, typedProvider } from '@lib';
+        import { TypedInjectionToken, typedProvider } from '@src';
         import { Module } from '@nestjs/common';
         declare const TOKEN_FOO: TypedInjectionToken<FooInterface>;
         interface FooInterface {
@@ -160,7 +160,7 @@ describe('common', () => {
     describe('providing incompatible alias by token', () => {
       // language=typescript
       const setup = lazyCompileTsFile(`
-        import { TypedInjectionToken, typedProvider } from '@lib';
+        import { TypedInjectionToken, typedProvider } from '@src';
         import { Module } from '@nestjs/common';
 
         interface FooInterface { foo(x: number): string; }

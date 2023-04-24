@@ -4,12 +4,15 @@
   "description": "Typesafe @inject decorator for inversify",
   "version": "1.0.2",
   "scripts": {
+    "build": "npm run typecheck && npm run test && npm run clean && npm run compile",
+    "clean": "node ../../shared/scripts/clean.mjs ./lib",
+    "compile": "tsc",
     "test": "jest",
     "typecheck": "tsc --noEmit"
   },
   "main": "lib",
   "dependencies": {
-    "typesafe-decorators": "^1.0.2"
+    "typesafe-decorators": "*"
   },
   "devDependencies": {
     "inversify": "^6.0.1"

@@ -4,6 +4,9 @@
   "description": "Typesafe @Inject decorator for Nest",
   "version": "1.0.2",
   "scripts": {
+    "build": "npm run typecheck && npm run test && npm run clean && npm run compile",
+    "clean": "node ../../shared/scripts/clean.mjs ./lib",
+    "compile": "tsc",
     "test": "jest",
     "typecheck": "tsc --noEmit"
   },

@@ -5,7 +5,7 @@ describe('TypedParameterDecorator', () => {
   describe('decorating a constructor parameter of right type', () => {
     // language=typescript
     const setup = lazyCompileTsFile(`
-      import { TypedParameterDecorator } from '@lib';
+      import { TypedParameterDecorator } from '@src';
 
       declare const decorator: TypedParameterDecorator<string>;
 
@@ -26,7 +26,7 @@ describe('TypedParameterDecorator', () => {
   describe('decorating a method parameter of right type', () => {
     // language=typescript
     const setup = lazyCompileTsFile(`
-      import { TypedParameterDecorator } from '@lib';
+      import { TypedParameterDecorator } from '@src';
 
       declare const decorator: TypedParameterDecorator<string>;
 
@@ -47,7 +47,7 @@ describe('TypedParameterDecorator', () => {
   describe('decorating a method parameter of super type', () => {
     // language=typescript
     const setup = lazyCompileTsFile(`
-      import { TypedParameterDecorator } from '@lib';
+      import { TypedParameterDecorator } from '@src';
       declare const decorator: TypedParameterDecorator<'jhqay'>;
       class Service { foo(@decorator p2: string) {} }
     `);
@@ -59,7 +59,7 @@ describe('TypedParameterDecorator', () => {
   describe('decorating a method parameter of extended type', () => {
     // language=typescript
     const setup = lazyCompileTsFile(`
-      import { TypedParameterDecorator } from '@lib';
+      import { TypedParameterDecorator } from '@src';
       declare const decorator: TypedParameterDecorator<string>;
       class Service { foo(p1: number, @decorator p2: 'axasy') {} }
     `);
@@ -75,7 +75,7 @@ describe('TypedParameterDecorator', () => {
   describe('decorating a method parameter of unrelated type', () => {
     // language=typescript
     const setup = lazyCompileTsFile(`
-      import { TypedParameterDecorator } from '@lib';
+      import { TypedParameterDecorator } from '@src';
       declare const decorator: TypedParameterDecorator<number>;
       class Service { foo(p1: number, @decorator p2: string) {} }
     `);

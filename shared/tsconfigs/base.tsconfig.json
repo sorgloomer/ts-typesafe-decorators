@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
     "module": "commonjs",
+    "noEmitOnError": true,
     "noImplicitAny": true,
     "strictNullChecks": true,
     "strict": true,
@@ -9,11 +10,11 @@
       "node"
     ],
     "paths": {
-      "@lib": [
-        "./lib"
+      "@src": [
+        "./src"
       ],
-      "@lib/*": [
-        "./lib/*"
+      "@src/*": [
+        "./src/*"
       ],
       "@test/*": [
         "./test/*"
