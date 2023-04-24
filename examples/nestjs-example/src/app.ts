@@ -23,6 +23,7 @@ export class Service {
     Service,
     typedProvider({ provide: TOKEN_FOO, useClass: FooService }),
     typedProvider({ provide: TOKEN_BAR, useClass: FooService }),
+    typedProvider({ provide: TOKEN_BAR, useExisting: TOKEN_FOO }),
   ]
 })
 class AppModule {}

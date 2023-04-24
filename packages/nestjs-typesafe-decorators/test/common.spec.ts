@@ -1,5 +1,5 @@
-import { describe, expect, it } from '@jest/globals';
-import { lazyCompileTsFile } from '@shared/src/test-helpers';
+import { describe, expect, it } from "@jest/globals";
+import { lazyCompileTsFile } from "@shared/src/test-helpers";
 
 describe('common', () => {
 
@@ -124,6 +124,66 @@ describe('common', () => {
       });
       it('has descriptive error message', () => {
         expect(setup()[0]).toContain(`Type 'typeof BarClass' is not assignable to type 'Type<FooInterface>'.`);
+      });
+    });
+
+    describe('providing incompatible alias by constructor', () => {
+      // language=typescript
+      const setup = lazyCompileTsFile(`
+        import { TypedInjectionToken, typedProvider } from '@lib';
+        import { Module } from '@nestjs/common';
+        declare const TOKEN_FOO: TypedInjectionToken<FooInterface>;
+        interface FooInterface {
+            foo(x: number): string;
+        }
+        class BarClass {
+          bar(x: number): string {return ''};
+        }
+        @Module({
+          providers: [
+            typedProvider({
+              provide: TOKEN_FOO,
+              useExisting: BarClass,
+            })
+          ]
+        })
+        class MyModule {}
+      `);
+      it('is not ok', () => {
+        expect(setup()).toHaveLength(1);
+      });
+      it('has descriptive error message', () => {
+        expect(setup()[0]).toContain(`Type 'typeof BarClass' is not assignable to type 'Type<FooInterface>'.`);
+      });
+    });
+
+    describe('providing incompatible alias by token', () => {
+      // language=typescript
+      const setup = lazyCompileTsFile(`
+        import { TypedInjectionToken, typedProvider } from '@lib';
+        import { Module } from '@nestjs/common';
+
+        interface FooInterface { foo(x: number): string; }
+        interface BarInterface { bar(x: number): string; }
+
+        declare const TOKEN_FOO: TypedInjectionToken<FooInterface>;
+        declare const TOKEN_BAR: TypedInjectionToken<BarInterface>;
+
+        @Module({
+          providers: [
+            typedProvider({
+              provide: TOKEN_FOO,
+              useExisting: TOKEN_BAR,
+            })
+          ]
+        })
+        class MyModule {}
+      `);
+      it('is not ok', () => {
+        expect(setup()).toHaveLength(1);
+      });
+      it('has descriptive error message', () => {
+        expect(setup()[0]).toContain(`Type 'TypedInjectionToken<BarInterface>' is not assignable to type 'TypedInjectionToken<FooInterface>'.`);
       });
     });
   });
