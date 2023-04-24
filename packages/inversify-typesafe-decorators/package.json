@@ -12,6 +12,7 @@
   },
   "main": "lib",
   "dependencies": {
+    "tslib": "^2.5.0",
     "typesafe-decorators": "*"
   },
   "devDependencies": {

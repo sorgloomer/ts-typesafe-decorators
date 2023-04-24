@@ -22,6 +22,7 @@ jobs:
         with:
           node-version: ${{ matrix.node }}
       - run: npm install
+      - run: npm run compile
       - run: npm install typescript@${{ matrix.typescript }}
       - run: npm run test
 
@@ -34,5 +35,6 @@ jobs:
         with:
           node-version: "18"
       - run: npm install
-      - run: npm run typecheck
+      - run: npm run compile
       - run: npm run lint
+      - run: npm run typecheck

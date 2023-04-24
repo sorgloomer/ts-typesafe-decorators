@@ -6,6 +6,7 @@
     "strictNullChecks": true,
     "strict": true,
     "resolveJsonModule": true,
+    "importHelpers": true,
     "types": [
       "node"
     ],
