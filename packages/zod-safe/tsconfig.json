@@ -1,0 +1,10 @@
+{
+  "extends": "../../shared/tsconfigs/base.tsconfig.json",
+  "files": [
+    "./src/index.ts"
+  ],
+  "compilerOptions": {
+    "declaration": true,
+    "outDir": "./lib"
+  }
+}
