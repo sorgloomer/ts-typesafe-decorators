@@ -6,7 +6,7 @@
 </p>
 
 <div>
-  <a href="https://github.com/sorgloomer/ts-typesafe-decorators">GitHub</a>
+  <a href="https://github.com/sorgloomer/ts-typesafe-decorators/tree/master/packages/typesafe-decorators">GitHub</a>
   <span>&nbsp;&nbsp;•&nbsp;&nbsp;</span>
   <a href="https://www.npmjs.com/package/typesafe-decorators">npm</a>
   <span>&nbsp;&nbsp;•&nbsp;&nbsp;</span>

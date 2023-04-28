@@ -1,9 +1,14 @@
 import { Abstract, ClassProvider, FactoryProvider, Inject, InjectionToken, Type, ValueProvider } from "@nestjs/common";
-import { TypedParameterDecorator } from "typesafe-decorators";
+import { TypedParameterDecorator, TypedPropertyDecorator } from "typesafe-decorators";
 
 // eslint-disable-next-line @typescript-eslint/ban-types
 export type TypedInjectionToken<T> = string | symbol | Type<T> | Abstract<T>;
-export const TypedInject: <T>(token: TypedInjectionToken<T>) => TypedParameterDecorator<T> = Inject;
+export const TypedInject: <T>(token: TypedInjectionToken<T>) => TypedInjectDecorator<T> = Inject as any;
+
+export type TypedInjectDecorator<T> =
+  & TypedParameterDecorator<T>
+  & TypedPropertyDecorator<T>
+  ;
 
 export const typedProvider = <T, P extends TypedProvider<T>>(p: P & TypedProvider<T>): P => p;
 
