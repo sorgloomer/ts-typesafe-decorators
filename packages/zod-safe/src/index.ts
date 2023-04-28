@@ -1,20 +1,20 @@
 import * as z from 'zod';
 
-export const ZodSafe = <Z extends z.ZodType>(schema: Z): ZodSatisfies<Z> => new ZodSatisfiesImpl(schema);
+export const ZodSafe = <Z extends z.ZodType>(schema: Z): ZodSafeBuilder<Z> => new ZodSafeBuilderImpl(schema);
 
 export type Exactly<T> = Variance<T>;
 export type Super<T> = Variance<never, T>;
 export type Extends<T> = Variance<T, unknown>;
 export type Variance<I, O = I> = { variance: (x: I) => O; }
 
-class ZodSatisfiesImpl implements ZodSatisfies<any> {
+class ZodSafeBuilderImpl implements ZodSafeBuilder<any> {
   public constructor(public readonly schema: any) {}
   matches() { return this.schema }
   input() { return this.schema }
   output() { return this.schema }
 }
 
-interface ZodSatisfies<Z extends z.ZodType> {
+interface ZodSafeBuilder<Z extends z.ZodType> {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   matches<M extends {
     input?: Variance<z.input<Z>>,

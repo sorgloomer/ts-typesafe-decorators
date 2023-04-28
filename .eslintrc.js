@@ -20,12 +20,11 @@ module.exports = {
     "simple-import-sort/exports": 1,
     "@typescript-eslint/no-explicit-any": 0,
   },
-  "overrides": [
-    {
-      "files": ["examples/**/*.ts"],
-      "rules": {
-        "@typescript-eslint/no-unused-vars": 0,
-      },
+  overrides: [{
+    files: ["examples/**/*.ts"],
+    rules: {
+      "@typescript-eslint/no-unused-vars": 0,
     },
-  ],
+  }],
+  ignorePatterns: ["packages/*/lib/"],
 };
