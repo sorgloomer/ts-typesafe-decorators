@@ -6,7 +6,7 @@ export default {
   preset: 'ts-jest',
   testEnvironment: 'node',
   testMatch: [
-    '<rootDir>/test/**/*.spec.ts',
+    '<rootDir>/src/**/*.test.ts',
   ],
   moduleNameMapper: pathsToModuleNameMapper(compilerOptions.paths, { prefix: '<rootDir>/' }),
 } satisfies JestConfigWithTsJest;

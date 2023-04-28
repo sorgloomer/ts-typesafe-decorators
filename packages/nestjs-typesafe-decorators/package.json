@@ -6,7 +6,7 @@
   "scripts": {
     "build": "npm run typecheck && npm run test && npm run clean && npm run compile",
     "clean": "node ../../shared/scripts/clean.mjs ./lib",
-    "compile": "tsc",
+    "compile": "tsc --project ./tsconfig.build.json",
     "test": "jest",
     "typecheck": "tsc --noEmit"
   },
@@ -38,5 +38,6 @@
     "nestjs",
     "nest"
   ],
-  "license": "MIT"
+  "license": "MIT",
+  "gitHead": "f57c1560790ad8c6534bb7850ad396b051642b41"
 }

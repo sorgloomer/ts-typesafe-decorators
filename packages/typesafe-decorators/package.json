@@ -32,5 +32,6 @@
     "ioc",
     "inference"
   ],
-  "license": "MIT"
+  "license": "MIT",
+  "gitHead": "f57c1560790ad8c6534bb7850ad396b051642b41"
 }
