@@ -5,7 +5,7 @@ import process from "node:process";
 
 const directory = process.argv[2];
 if (!directory) {
-  throw new Error("usage: node clean.js <dir>");
+  throw new Error("usage: node clean.mjs <dir>");
 }
 if (fss.existsSync(directory)) {
   for (const file of await fs.readdir(directory)) {

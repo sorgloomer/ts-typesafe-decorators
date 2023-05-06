@@ -1,7 +1,0 @@
-{
-  "extends": "../../shared/tsconfigs/base.tsconfig.json",
-  "compilerOptions": {
-    "declaration": true,
-    "outDir": "./lib"
-  }
-}
