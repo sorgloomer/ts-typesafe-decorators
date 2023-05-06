@@ -6,9 +6,9 @@
 </p>
 
 <div>
-  <a href="https://github.com/sorgloomer/ts-typesafe-decorators">GitHub</a>
+  <a href="https://github.com/sorgloomer/ts-typesafe-decorators/tree/master/packages/nestjs-typesafe-decorators">GitHub</a>
   <span>&nbsp;&nbsp;•&nbsp;&nbsp;</span>
-  <a href="https://www.npmjs.com/package/typesafe-decorators">npm</a>
+  <a href="https://www.npmjs.com/package/nestjs-typesafe-decorators">npm</a>
   <span>&nbsp;&nbsp;•&nbsp;&nbsp;</span>
   <a href="https://github.com/sorgloomer/ts-typesafe-decorators/issues">Issues</a>
   <span>&nbsp;&nbsp;•&nbsp;&nbsp;</span>
@@ -24,7 +24,7 @@ This repository contains helper libraries to enforce the correct types of inject
 favorite ioc container.
 
 
-### Usage with NestJS
+### Usage
 
 Install
 
@@ -61,101 +61,6 @@ Wrap your token based providers in `typedProvider(...)`
 })
 class AppModule {}
 ```
-
-
-### Usage with Inversify
-
-Install
-
-```shell
-npm i --save inversify-typesafe-decorators
-```
-
-Use the builtin `ServiceIdentifier<T>` type to annotate your injection tokens
-
-```typescript
-import { interfaces } from 'inversify';
-const FOO_TOKEN: interfaces.ServiceIdentifier<IFooService> = 'FOO_SERVICE_TOKEN';
-```
-
-Replace `@inject(...)` decorators with `@TypedInject(...)`
-
-
-### A more complete example
-
-```typescript
-import { Injectable, Logger, Module } from '@nestjs/common';
-import { TypedInject, TypedInjectionToken, typedProvider } from 'nestjs-typesafe-decorators';
-
-export interface IFooService { foo(): string; }
-export interface IBarService { bar(): string; }
-
-export const TOKEN_FOO = 'TOKEN_FOO' as TypedInjectionToken<IFooService>;
-export const TOKEN_BAR = 'TOKEN_BAR' as TypedInjectionToken<IBarService>;
-
-@Injectable()
-export class Service {
-  constructor(
-    private readonly logger: Logger,
-
-    @TypedInject(TOKEN_FOO)
-    private readonly fooService: IFooService,
-
-    @TypedInject(TOKEN_FOO)
-//  ^^^^^^^^^^^^^^^^^^^^^^^
-    private readonly barService: IBarService,
-  ) {}
-}
-
-@Injectable() class FooService implements IFooService { foo(): string { return '' }; }
-@Injectable() class BarService implements IBarService { bar(): string { return '' }; }
-
-@Module({
-  providers: [
-    Service,
-    typedProvider({ provide: TOKEN_FOO, useClass: FooService }),
-    typedProvider({ provide: TOKEN_BAR, useClass: FooService }),
-//                                      ^^^^^^^^
-  ]
-})
-class AppModule {}
-```
-
-Take a look at the [`examples`](./examples) folder.
-
-
-### Narrowing of injection tokens
-
-I recommend to put your injection tokens in a separate `.token.ts` file.
-Typescript does some agressive type narrowing, so the following (wrong) code actually typechecks:
-
-```typescript
-import { ContainerModule, injectable, interfaces } from 'inversify';
-import { TypedInject } from 'inversify-typesafe-decorators';
-
-interface IFooService { bar(): string; }
-interface IBarService { bar(): string; }
-
-const FOO_TOKEN: interfaces.ServiceIdentifier<IFooService> = Symbol('FOO_TOKEN');
-const BAR_TOKEN: interfaces.ServiceIdentifier<IBarService> = Symbol('BAR_TOKEN');
-
-@injectable()
-class FooService { foo() { return ''; } }
-
-export const getModule = () => new ContainerModule(bind => {
-  // Notice the error here
-  bind(BAR_TOKEN).to(FooService);
-});
-```
-
-In this example, the type of `BAR_TOKEN` is narrowed to `symbol`, and because of that `bind`
-infers `unknown` as the service type.
-
-There are a few possible solutions to prevent type narrowing:
-
-- Put the tokens in a separate source file. This is the recommended approach.
-- or use `const BAR_TOKEN = Symbol('BAR_TOKEN') as interfaces.ServiceIdentifier<IBarService>;`
-- or use `const BAR_TOKEN: interfaces.ServiceIdentifier<IBarService> = Symbol('BAR_TOKEN') as any;`
 
 
 ### Future

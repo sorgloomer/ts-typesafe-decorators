@@ -21,9 +21,13 @@ module.exports = {
     "@typescript-eslint/no-explicit-any": 0,
   },
   overrides: [{
-    files: ["examples/**/*.ts"],
+    files: [
+      "examples/**/*.ts",
+      "packages/*/examples/**/*.ts",
+    ],
     rules: {
       "@typescript-eslint/no-unused-vars": 0,
+      "@typescript-eslint/no-empty-function": 0,
     },
   }],
   ignorePatterns: ["packages/*/lib/"],

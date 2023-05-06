@@ -6,9 +6,9 @@
 </p>
 
 <div>
-  <a href="https://github.com/sorgloomer/ts-typesafe-decorators">GitHub</a>
+  <a href="https://github.com/sorgloomer/ts-typesafe-decorators/tree/master/packages/inversify-typesafe-decorators">GitHub</a>
   <span>&nbsp;&nbsp;•&nbsp;&nbsp;</span>
-  <a href="https://www.npmjs.com/package/typesafe-decorators">npm</a>
+  <a href="https://www.npmjs.com/package/inversify-typesafe-decorators">npm</a>
   <span>&nbsp;&nbsp;•&nbsp;&nbsp;</span>
   <a href="https://github.com/sorgloomer/ts-typesafe-decorators/issues">Issues</a>
   <span>&nbsp;&nbsp;•&nbsp;&nbsp;</span>
@@ -24,46 +24,7 @@ This repository contains helper libraries to enforce the correct types of inject
 favorite ioc container.
 
 
-### Usage with NestJS
-
-Install
-
-```shell
-npm i --save nestjs-typesafe-decorators
-```
-
-Use the `TypedInjectionToken<IService>` type to annotate your injection tokens
-
-```typescript
-export const TOKEN_FOO: TypedInjectionToken<IFooService> = 'TOKEN_FOO';
-```
-
-Replace `@Inject(...)` decorators with `@TypedInject(...)`
-
-```typescript
-@Injectable()
-export class Service {
-  constructor(
-    @TypedInject(TOKEN_FOO)
-    private readonly fooService: IFooService,
-  ) {}
-}
-```
-
-Wrap your token based providers in `typedProvider(...)`
-
-```typescript
-@Module({
-  providers: [
-    Service,
-    typedProvider({ provide: TOKEN_FOO, useClass: FooService }),
-  ]
-})
-class AppModule {}
-```
-
-
-### Usage with Inversify
+### Usage
 
 Install
 
