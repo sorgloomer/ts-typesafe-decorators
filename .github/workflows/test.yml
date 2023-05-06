@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node: ["20"]
+        node: ["20", "14"]
         typescript: ["5.0"]
     name: TS ${{ matrix.typescript }} Node ${{ matrix.node }}
     steps:

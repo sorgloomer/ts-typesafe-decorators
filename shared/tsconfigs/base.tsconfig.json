@@ -25,7 +25,7 @@
         "../../shared/*"
       ]
     },
-    "experimentalDecorators": true,
+    "experimentalDecorators": true
   },
   "moduleResolution": "node"
 }
