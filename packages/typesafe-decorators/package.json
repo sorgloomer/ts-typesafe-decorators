@@ -2,7 +2,7 @@
   "name": "typesafe-decorators",
   "author": "Tamás Hegedűs <tamas.laszlo.hegedus@gmail.com>",
   "description": "Better types for experimental/legacy TypeScript decorators",
-  "version": "1.1.0",
+  "version": "2.0.0",
   "scripts": {
     "build": "npm run typecheck && npm run test && npm run clean && npm run compile",
     "clean": "node ../../shared/scripts/clean.mjs ./lib",
