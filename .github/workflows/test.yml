@@ -23,7 +23,7 @@ jobs:
           node-version: ${{ matrix.node }}
       - run: npm install
       - run: npm run compile
-      - run: npm install typescript@${{ matrix.typescript }}
+      - run: npm install --no-save typescript@${{ matrix.typescript }}
       - run: npm run test
 
   lint:
@@ -33,7 +33,7 @@ jobs:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
         with:
-          node-version: "18"
+          node-version: "20"
       - run: npm install
       - run: npm run compile
       - run: npm run lint
