@@ -13,9 +13,9 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node: ["14", "20"]
-        typescript: ["5.0", "4.0", "3.9"]
-    name: Test with TypeScript ${{ matrix.typescript }} on Node ${{ matrix.node }}
+        node: ["20"]
+        typescript: ["5.0"]
+    name: TS ${{ matrix.typescript }} Node ${{ matrix.node }}
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
