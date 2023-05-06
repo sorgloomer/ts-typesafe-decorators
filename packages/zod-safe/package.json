@@ -8,7 +8,7 @@
     "clean": "node ../../shared/scripts/clean.mjs ./lib",
     "compile": "tsc --project ./tsconfig.build.json",
     "test": "jest",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --project ./tsconfig.check.json --noEmit"
   },
   "main": "lib",
   "devDependencies": {
