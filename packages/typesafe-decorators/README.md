@@ -103,8 +103,6 @@ export class Service {
 
     @TypedInject(TOKEN_FOO)
 //  ^^^^^^^^^^^^^^^^^^^^^^^
-//    Types of parameters 'barService' and 'barService' are incompatible.
-//      Property 'bar' is missing in type 'IFooService' but required in type 'IBarService'.
     private readonly barService: IBarService,
   ) {}
 }
@@ -118,7 +116,6 @@ export class Service {
     typedProvider({ provide: TOKEN_FOO, useClass: FooService }),
     typedProvider({ provide: TOKEN_BAR, useClass: FooService }),
 //                                      ^^^^^^^^
-//                                        Type 'typeof FooService' is not assignable to type 'Type<IBarService>'
   ]
 })
 class AppModule {}
