@@ -3,11 +3,10 @@ import { MatchWithDirection } from "./internal";
 
 export type TypedClassDecorator<T, D extends Direction> = <
   TConstructor
->(target: TConstructor) => MatchWithDirection<{
+>(target: TConstructor) => TConstructor | void | MatchWithDirection<{
   slot: TConstructor;
   value: T;
   dir: D;
   slotName: "constructor";
   valueName: "decorator";
-  orElse: TConstructor | void;
 }>;

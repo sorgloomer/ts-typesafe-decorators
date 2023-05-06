@@ -9,7 +9,7 @@ export type TypedMethodDecorator<T, D extends Direction> = <
   target: TTarget,
   propertyKey: TKey,
   descriptor: TypedPropertyDescriptor<TMethod>,
-) => MatchWithDirection<{
+) => TypedPropertyDescriptor<TMethod> | void | MatchWithDirection<{
   // to allow decorating private methods
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
@@ -18,5 +18,4 @@ export type TypedMethodDecorator<T, D extends Direction> = <
   dir: D;
   slotName: "method";
   valueName: "decorator";
-  orElse: TypedPropertyDescriptor<TMethod> | void;
 }>;

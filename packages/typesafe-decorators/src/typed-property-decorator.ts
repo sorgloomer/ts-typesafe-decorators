@@ -7,7 +7,7 @@ export type TypedPropertyDecorator<T, D extends Direction> = <
 >(
   target: TTarget,
   propertyKey: TKey,
-) => MatchWithDirection<{
+) => void | MatchWithDirection<{
   // to allow decorating private fields
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
@@ -16,5 +16,4 @@ export type TypedPropertyDecorator<T, D extends Direction> = <
   dir: D;
   slotName: "property";
   valueName: "decorator";
-  orElse: void;
 }>;

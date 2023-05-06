@@ -5,13 +5,12 @@ export type TypedParameterDecorator<T, D extends Direction> = <
   TTarget,
   TKey extends DecoratorPropertyKey,
   TIndex extends number
->(target: TTarget, prop: TKey, index: TIndex) => MatchWithDirection<{
+>(target: TTarget, prop: TKey, index: TIndex) => void | MatchWithDirection<{
   slot: GetParameterType<TTarget, TKey, TIndex>;
   value: T;
   dir: D;
   slotName: "parameter";
   valueName: "decorator";
-  orElse: void;
 }>;
 
 export type GetParameterType<
