@@ -1,6 +1,6 @@
+import { expect } from '@jest/globals';
 import * as projectTsConfig from '@shared/tsconfigs/base.tsconfig.json';
 import * as ts from 'typescript';
-import { expect } from '@jest/globals';
 
 import { lazy, Producer } from './lazy';
 

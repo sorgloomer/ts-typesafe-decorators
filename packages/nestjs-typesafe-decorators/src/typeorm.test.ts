@@ -1,5 +1,5 @@
 import { describe, expect, it } from '@jest/globals';
-import { lazyCompileTsFile } from '@shared/src/test-helpers';
+import { lazyCompileTsFile, testCode } from "@shared/src/test-helpers";
 
 describe('TypedInject', () => {
   describe('injecting into compatible field', () => {
@@ -29,7 +29,7 @@ describe('TypedInject', () => {
 
   describe('injecting into incompatible field', () => {
     // language=typescript
-    const setup = lazyCompileTsFile(`
+    const code = `
       import { TypedInjectRepository } from '@src/typeorm';
       import { Repository } from 'typeorm';
       import { Logger } from '@nestjs/common';
@@ -50,16 +50,7 @@ describe('TypedInject', () => {
           private readonly repo: Repository<BarEntity>
         ) {}
       }
-    `);
-    it('is not ok', () => {
-      expect(setup()).toHaveLength(1);
-    });
-    it('has descriptive error message', () => {
-      expect(setup()[0]).toContain(`Types of parameters 'repo' and 'repo' are incompatible.`);
-      expect(setup()[0]).toContain(
-        `Type 'Repository<FooEntity>' is not assignable to type 'Repository<BarEntity>'.`
-      );
-      expect(setup()[0]).toContain(`Type 'FooEntity' is not assignable to type 'BarEntity'.`);
-    });
+    `;
+    testCode(code, 'Type of decorator is not assignable to type of parameter.');
   });
 });

@@ -1,121 +1,95 @@
-import { describe, expect, it } from '@jest/globals';
-import { lazyCompileTsFile } from '@shared/src/test-helpers';
+import { describe, it } from "@jest/globals";
+import { OK, testCode } from "@shared/src/test-helpers";
 
 describe('TypedMethodDecorator', () => {
-  describe('decorating a method of exact type', () => {
+  const ERROR_MSG = 'Type of method is not assignable to type of decorator.';
+  it('decorating a method of exact type', () => {
     // language=typescript
-    const setup = lazyCompileTsFile(`
-      import { TypedPropertyDecorator } from '@src';
+    const code = `
+      import { TypedMethodDecorator } from '@src';
 
-      declare const decorator: TypedPropertyDecorator<(p1: number) => string>;
+      declare const decorator: TypedMethodDecorator<(p1: number) => string, 'get'>;
 
       class Service {
         @decorator
         bar(p1: number): string { return ''; };
       }
-    `);
-    it('is ok', () => {
-      expect(setup()).toHaveLength(0);
-    });
+    `;
+    testCode(code, OK);
   });
 
-  describe('decorating a method with more arguments', () => {
+  it('decorating a method with more arguments', () => {
     // language=typescript
-    const setup = lazyCompileTsFile(`
-      import { TypedPropertyDecorator } from '@src';
+    const code = `
+      import { TypedMethodDecorator } from '@src';
 
-      declare const decorator: TypedPropertyDecorator<(p1: number) => string>;
+      declare const decorator: TypedMethodDecorator<(p1: number) => string, 'get'>;
 
       class Service {
         @decorator
         bar(p1: number, p2: number): string { return ''; };
       }
-    `);
-    it('is not ok', () => {
-      expect(setup()).toHaveLength(1);
-    });
-    it('has descriptive error message', () => {
-      expect(setup()[0]).toContain(`Types of property 'bar' are incompatible.`);
-      expect(setup()[0]).toContain(
-        `Type '(p1: number, p2: number) => string' is not assignable to type '(p1: number) => string'.`
-      );
-    });
+    `;
+    testCode(code, ERROR_MSG);
   });
 
-  describe('decorating a method with fewer arguments', () => {
+  it('decorating a method with fewer arguments', () => {
     // language=typescript
-    const setup = lazyCompileTsFile(`
-      import { TypedPropertyDecorator } from '@src';
+    const code = `
+      import { TypedMethodDecorator } from '@src';
 
-      declare const decorator: TypedPropertyDecorator<(p1: number) => string>;
+      declare const decorator: TypedMethodDecorator<(p1: number) => string, 'get'>;
 
       class Service {
         @decorator
         bar(): string { return ''; };
       }
-    `);
-    it('is ok', () => {
-      expect(setup()).toHaveLength(0);
-    });
+    `;
+    testCode(code, OK);
   });
 
-  describe('decorating a method with super return type', () => {
+  it('decorating a method with super return type', () => {
     // language=typescript
-    const setup = lazyCompileTsFile(`
-      import { TypedPropertyDecorator } from '@src';
+    const code = `
+      import { TypedMethodDecorator } from '@src';
 
-      declare const decorator: TypedPropertyDecorator<(p1: number) => string>;
+      declare const decorator: TypedMethodDecorator<(p1: number) => string, 'get'>;
 
       class Service {
         @decorator
         bar(): unknown { return ''; };
       }
-    `);
-    it('is not ok', () => {
-      expect(setup()).toHaveLength(1);
-    });
-    it('has descriptive error message', () => {
-      expect(setup()[0]).toContain(`The types returned by 'bar(...)' are incompatible between these types.`);
-      expect(setup()[0]).toContain(`Type 'unknown' is not assignable to type 'string'.`);
-    });
+    `;
+    testCode(code, ERROR_MSG);
   });
 
-    describe('decorating a method with extended return type', () => {
+  it('decorating a method with extended return type', () => {
     // language=typescript
-    const setup = lazyCompileTsFile(`
-      import { TypedPropertyDecorator } from '@src';
+    const code = `
+      import { TypedMethodDecorator } from '@src';
 
-      declare const decorator: TypedPropertyDecorator<(p1: number) => string>;
+      declare const decorator: TypedMethodDecorator<(p1: number) => string, 'get'>;
 
       class Service {
         @decorator
         bar(): 'unzou' { return 'unzou'; };
       }
-    `);
-    it('is ok', () => {
-      expect(setup()).toHaveLength(0);
-    });
+    `;
+    testCode(code, OK);
   });
 
-  describe('decorating a method with unrelated return type', () => {
+  it('decorating a method with unrelated return type', () => {
     // language=typescript
-    const setup = lazyCompileTsFile(`
-      import { TypedPropertyDecorator } from '@src';
+    const code = `
+      import { TypedMethodDecorator } from '@src';
 
-      declare const decorator: TypedPropertyDecorator<(p1: number) => 3 | 4>;
+      declare const decorator: TypedMethodDecorator<(p1: number) => 3 | 4, 'get'>;
 
       class Service {
         @decorator
         bar(): 4 | 5 { return 5; };
       }
-    `);
-    it('is not ok', () => {
-      expect(setup()).toHaveLength(1);
-    });
-    it('has descriptive error message', () => {
-      expect(setup()[0]).toContain(`The types returned by 'bar(...)' are incompatible between these types.`);
-      expect(setup()[0]).toContain(`Type '4 | 5' is not assignable to type '3 | 4'.`);
-    });
+    `;
+    testCode(code, ERROR_MSG);
   });
-
 });

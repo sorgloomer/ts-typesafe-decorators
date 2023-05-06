@@ -1,6 +1,7 @@
 {
   "extends": "../../shared/tsconfigs/base.tsconfig.json",
   "compilerOptions": {
-    "outDir": "./lib"
+    "outDir": "./lib",
+    "removeComments": false // TODO: it seems rollup-plugin-tsc still removes comments, need to add them back manually
   }
 }

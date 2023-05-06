@@ -16,4 +16,5 @@ export type TypedPropertyDecorator<T, D extends Direction> = <
   dir: D;
   slotName: "property";
   valueName: "decorator";
+  orElse: void;
 }>;

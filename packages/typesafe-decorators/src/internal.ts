@@ -4,7 +4,7 @@ declare const error: unique symbol;
 export type TypeError<M extends string> = { [error]: M };
 
 export type MatchWithDirection<T extends MatcherPayload> =
-  CheckGetSet<T, CheckSet<T, CheckGet<T, void>>>
+  CheckGetSet<T, CheckSet<T, CheckGet<T, T['orElse']>>>
   ;
 
 type MatcherPayload = {
@@ -13,6 +13,7 @@ type MatcherPayload = {
   dir: Direction;
   slotName: string;
   valueName: string;
+  orElse: unknown;
 };
 
 type CheckSet<T extends MatcherPayload, Else> =

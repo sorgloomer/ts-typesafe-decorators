@@ -1,5 +1,5 @@
 import { describe, expect, it } from "@jest/globals";
-import { lazyCompileTsFile } from "@shared/src/test-helpers";
+import { lazyCompileTsFile, testCode } from "@shared/src/test-helpers";
 
 describe('common', () => {
 
@@ -33,9 +33,9 @@ describe('common', () => {
       });
     });
 
-    describe('injecting into incompatible field', () => {
+    it('injecting into incompatible field', () => {
       // language=typescript
-      const setup = lazyCompileTsFile(`
+      const code = `
         import { TypedInject } from '@src';
         import { Logger } from '@nestjs/common';
 
@@ -54,16 +54,8 @@ describe('common', () => {
             private readonly service: IServiceB
           ) {}
         }
-      `);
-      it('is not ok', () => {
-        expect(setup()).toHaveLength(1);
-      });
-      it('has descriptive error message', () => {
-        expect(setup()[0]).toContain(`Types of parameters 'service' and 'service' are incompatible.`);
-        expect(setup()[0]).toContain(
-          `Property 'foo' is missing in type 'ServiceA' but required in type 'IServiceB'.`,
-        );
-      });
+      `;
+      testCode(code, 'Type of decorator is not assignable to type of parameter.');
     });
   });
 

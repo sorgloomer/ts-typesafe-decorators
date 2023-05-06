@@ -6,7 +6,10 @@
   "scripts": {
     "build": "npm run typecheck && npm run test && npm run clean && npm run compile",
     "clean": "node ../../shared/scripts/clean.mjs ./lib",
-    "compile": "rollup --config rollup.config.cjs.mjs && rollup --config rollup.config.dts.mjs",
+    "compile": "npm run compile:dts && npm run compile:finish",
+    "compile:cjs": "rollup --config rollup.config.cjs.mjs # does not work",
+    "compile:dts": "rollup --config rollup.config.dts.mjs",
+    "compile:finish": "node scripts/finish-compile.mjs",
     "test": "jest",
     "typecheck": "tsc --noEmit"
   },

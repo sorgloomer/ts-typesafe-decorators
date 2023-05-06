@@ -6,8 +6,8 @@ export type TypedInjectionToken<T> = string | symbol | Type<T> | Abstract<T>;
 export const TypedInject: <T>(token: TypedInjectionToken<T>) => TypedInjectDecorator<T> = Inject as any;
 
 export type TypedInjectDecorator<T> =
-  & TypedParameterDecorator<T>
-  & TypedPropertyDecorator<T>
+  & TypedParameterDecorator<T, 'set'>
+  & TypedPropertyDecorator<T, 'set'>
   ;
 
 export const typedProvider = <T, P extends TypedProvider<T>>(p: P & TypedProvider<T>): P => p;

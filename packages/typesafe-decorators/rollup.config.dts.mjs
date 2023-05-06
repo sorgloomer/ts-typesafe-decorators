@@ -5,5 +5,5 @@ export default {
   output: [
     { file: "lib/index.d.ts", format: "es" },
   ],
-  plugins: [dts({ tsconfig: './tsconfig.build.json' })],
+  plugins: [dts({ tsconfig: './tsconfig.build.json', compilerOptions: {removeComments: false} })],
 };

@@ -8,6 +8,6 @@ export const TypedInject: <T>(
 export type ServiceIdentifier<T> = interfaces.ServiceIdentifier<T>;
 
 export type TypedInjectDecorator<T> =
-  & TypedParameterDecorator<T>
-  & TypedPropertyDecorator<T>
+  & TypedParameterDecorator<T, 'set'>
+  & TypedPropertyDecorator<T, 'set'>
   ;
