@@ -2,12 +2,22 @@ import * as z from 'zod';
 
 export const ZodSafe = <Z extends z.ZodType>(schema: Z): ZodSafeBuilder<Z> => new ZodSafeBuilderImpl(schema);
 
-export type Exactly<T> = VarianceHelper<T, T>;
-export type Super<T> = VarianceHelper<any, T>;
-export type Extends<T> = VarianceHelper<T, any>;
-export type Type<T> = VarianceHelper<T, T>;
+export type Exactly<T> = Ref<T>;
+export type Super<T> = {
+  get: /* no shorthands, variance is loose with shorthands! */ () => T;
+};
+export type Extends<T> = {
+  set: /* no shorthands, variance is loose with shorthands! */ (value: T) => void;
+};
+export type Type<T> = {
+  get?: /* no shorthands, variance is loose with shorthands! */ () => T;
+  set?: /* no shorthands, variance is loose with shorthands! */ (value: T) => void;
+};
 
-type VarianceHelper<I, O> = { variance: (input: I) => O; }
+export type Ref<T> = {
+  get: /* no shorthands, variance is loose with shorthands! */ () => T;
+  set: /* no shorthands, variance is loose with shorthands! */ (value: T) => void;
+}
 
 class ZodSafeBuilderImpl implements ZodSafeBuilder<any> {
   public constructor(public readonly schema: any) {}

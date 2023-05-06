@@ -1,5 +1,6 @@
 {
   "extends": "../../shared/tsconfigs/base.tsconfig.json",
+  "exclude": ["./examples"],
   "compilerOptions": {
     "declaration": true,
     "outDir": "./lib"
