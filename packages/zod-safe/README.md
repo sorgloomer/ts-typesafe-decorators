@@ -49,7 +49,7 @@ export const ContactSchema = ZodSafe(
   })
 ).infer<Exactly<ContactDto>>();
 //      ^^^^^^^^^^^^^^^^^^^
-//  The types of 'variance(...).name' are incompatible between these types.
+//  The types of 'get().name' are incompatible between these types.
 //  Type 'string | undefined' is not assignable to type 'string'.
 ```
 
