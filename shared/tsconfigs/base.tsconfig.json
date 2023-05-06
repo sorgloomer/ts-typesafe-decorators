@@ -26,6 +26,6 @@
       ]
     },
     "experimentalDecorators": true,
-    "moduleResolution": "node"
-  }
+  },
+  "moduleResolution": "node"
 }
