@@ -1,60 +1,46 @@
-import { describe, expect, it } from '@jest/globals';
-import { lazyCompileTsFile } from '@shared/src/test-helpers';
+import { describe, it } from "@jest/globals";
+import { OK, testCode } from "@shared/src/test-helpers";
 
-describe('TypedPropertyDecorator', () => {
-  describe('decorating a property of exact type', () => {
-    // language=typescript
-    const setup = lazyCompileTsFile(`
-      import { TypedPropertyDecorator } from '@src';
+describe("TypedPropertyDecorator", () => {
+  const ERROR_NOT_EQUAL = "Type of property is not equal to type of decorator.";
+  const MATRIX = [
+    ["'set'", "1", "Type of decorator is not assignable to type of property."],
+    ["'set'", "1 | 2", OK],
+    ["'set'", "1 | 2 | 3", OK],
+    ["'get'", "1", OK],
+    ["'get'", "1 | 2", OK],
+    ["'get'", "1 | 2 | 3", "Type of property is not assignable to type of decorator."],
+    ["'get' | 'set'", "1", ERROR_NOT_EQUAL],
+    ["'get' | 'set'", "1 | 2", OK],
+    ["'get' | 'set'", "1 | 2 | 3", ERROR_NOT_EQUAL],
+  ] as const;
+  for (const [direction, slot, expected] of MATRIX) {
+    it(`decorator<1 | 2, ${direction}> on property: ${slot}`, () => {
+      // language=typescript
+      testCode(`
+        import { TypedPropertyDecorator } from '@src';
 
-      declare const decorator: TypedPropertyDecorator<string>;
+        declare const dec: TypedPropertyDecorator<1 | 2, ${direction}>;
 
-      class Service {
-        @decorator
-        bar!: string;
-      }
-    `);
-    it('is ok', () => {
-      expect(setup()).toHaveLength(0);
+        class Foo {@dec foo!: ${slot};}
+      `, expected);
     });
+  }
+  it("decorating a private property when ok", () => {
+    // language=typescript
+    testCode(`
+      import { TypedPropertyDecorator } from '@src';
+      declare const d: TypedPropertyDecorator<string, 'get' | 'set'>;
+      class Bar { @d private bar!: string; }
+    `, OK);
+  });
+  it("decorating a private property when not ok", () => {
+    // language=typescript
+    testCode(`
+      import { TypedPropertyDecorator } from '@src';
+      declare const d: TypedPropertyDecorator<number, 'get' | 'set'>;
+      class Bar { @d private bar!: string; }
+    `, ERROR_NOT_EQUAL);
   });
 
-  describe('decorating a property of super type', () => {
-    // language=typescript
-    const setup = lazyCompileTsFile(`
-      import { TypedPropertyDecorator } from '@src';
-
-      declare const decorator: TypedPropertyDecorator<'gfkil'>;
-
-      class Service {
-        @decorator
-        bar!: string;
-      }
-    `);
-    it('is not ok', () => {
-      expect(setup().length).toEqual(1);
-    });
-    it('has descriptive error message', () => {
-      expect(setup()[0]).toContain(
-        `Type 'string' is not assignable to type '"gfkil"'.`,
-      );
-    });
-  });
-
-  describe('decorating a property of extended type', () => {
-    // language=typescript
-    const setup = lazyCompileTsFile(`
-      import { TypedPropertyDecorator } from '@src';
-
-      declare const decorator: TypedPropertyDecorator<number>;
-
-      class Service {
-        @decorator
-        bar!: 62343;
-      }
-    `);
-    it('is ok', () => {
-      expect(setup().length).toEqual(0);
-    });
-  });
 });

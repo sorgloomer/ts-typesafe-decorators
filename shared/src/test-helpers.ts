@@ -1,9 +1,46 @@
 import * as projectTsConfig from '@shared/tsconfigs/base.tsconfig.json';
 import * as ts from 'typescript';
+import { expect } from '@jest/globals';
 
 import { lazy, Producer } from './lazy';
 
 const VIRTUAL_ENTRY = 'virtual/entry.ts';
+
+export function expectOk(code: string) {
+  const errors = compileTsFile(code);
+  expect(errors).toHaveLength(0);
+}
+export function expectError(
+  code: string,
+  expectedErrors: [string, ...string[]],
+) {
+  const errors = (compileTsFile(code) ?? []).join('\n\n');
+  expect(expectedErrors.length).toBeGreaterThan(0);
+  for (const expectedError of expectedErrors) {
+    expect(errors).toContain(expectedError);
+  }
+}
+
+export const OK = Symbol('OK');
+
+export function testCode(
+  code: string,
+  expected: typeof OK | string | [string, ...string[]],
+) {
+  const errors = (compileTsFile(code) ?? []).join('\n\n');
+  if (expected === OK) {
+    expect(errors).toEqual('');
+  } else if (typeof expected === 'string') {
+    expect(errors).toContain(expected);
+  } else if (Array.isArray(expected)) {
+    expect(expected.length).toBeGreaterThan(0);
+    for (const expectedError of expected) {
+      expect(errors).toContain(expectedError);
+    }
+  } else {
+    throw new Error('unknown argument');
+  }
+}
 
 export const lazyCompileTsFile = (
   content: string,
