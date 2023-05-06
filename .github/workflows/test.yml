@@ -13,27 +13,27 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node: ["14", "20"]
-        typescript: ["5.0", "4.0", "3.9"]
-    name: Test with TypeScript ${{ matrix.typescript }} on Node ${{ matrix.node }}
+        node: ["20", "16"]
+        typescript: ["5.0"]
+    name: TS ${{ matrix.typescript }} Node ${{ matrix.node }}
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node }}
       - run: npm install
       - run: npm run compile
-      - run: npm install typescript@${{ matrix.typescript }}
+      - run: npm install --no-save typescript@${{ matrix.typescript }}
       - run: npm run test
 
   lint:
     runs-on: ubuntu-latest
     name: Lint and Typecheck
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
         with:
-          node-version: "18"
+          node-version: "20"
       - run: npm install
       - run: npm run compile
       - run: npm run lint
